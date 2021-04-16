@@ -1,0 +1,27 @@
+<!--La sentencia para generar un componente es la siguiente:
+    ng generate component heroes/listado
+    ng g c heroes/listado
+-->
+<p>Listado de Héroes</p>
+
+<!--<div *ngIf="heroeBorrado.length>0">-->
+<!--<div *ngIf="heroeBorrado !== ''">-->
+<div *ngIf="heroeBorrado;else noBorrado"><!--En esta lartenativa se puede poner simplementeel valor del heroe borrado ya que '',false,undefinied,null ya que el *ngIf es lo suficientemente inteligente para determinar que esos valores representanm falso-->
+    <h3>Héroe Borrado: <small>{{heroeBorrado}}</small></h3>
+</div>
+<!--else noBorrado, noBorrado es una referencioa local-->
+
+<ng-template #noBorrado>
+    <h3>No ha borrado nada</h3>
+</ng-template>
+
+<button (click)="borrarHeroe()">
+    Borrar
+</button>
+
+<ul>
+    <li *ngFor="let heroe of heroes; let i=index">
+        {{i+1}} - {{heroe}}
+    </li>
+</ul>
+
